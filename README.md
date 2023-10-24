@@ -1,13 +1,9 @@
-This extension was made to make easier the use of some Microbit funtions in blocks programming as Pins use or (in a future) serial connection use or PID. 
+This extension was made to make easier the use of some Microbit funtions in blocks programming as Pins use, PID controllers and more in future.
 
 You can import this extension and use some functionalities as:
 
 - Manage digital pins.
 - Manage analog pins.
-
-In a futures, we want to implement some other functionalities as.
-
-- PID configuration
-
+- Create and configure PID controllers.
 
 Made by LegoWorks.
