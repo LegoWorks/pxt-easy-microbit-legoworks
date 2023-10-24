@@ -118,6 +118,7 @@ class PID {
     * Block to control analog pins.
     */
 
+    //% this.defl=PID
     //% block="Corrección: $this para una entrada= $input y con objetivo= $target" 
     GetCorrection(input: number, target: number) {
 
