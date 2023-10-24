@@ -61,7 +61,7 @@ namespace Easy_pins {
     //% pin.fieldOptions.width=20
     //% pin.fieldOptions.columns=1
 
-    //% value.min=0 value.max=1023 value.defl=1 
+    //% value.min=0 value.max=1023 value.defl=0
     export function writeAnalog(pin: AnalogPin, value: number) {
         pins.analogWritePin(pin, value)
     }
@@ -75,22 +75,18 @@ namespace Easy_pins {
 //% block="Easy control"
 namespace Control{
     
-    //% block="Crear nuevo controlador con parametros: kp=$kp | ti=$ti |td=$td"
-     //% kp.defl = 1 
-    //% ti.defl = 1
-    //% td.defl = 0
+    //% block="Crear nuevo controlador con parametros: kp=$kp ti=$ti td=$td"
+    //% kp.defl = 1 ti.defl = 1 td.defl = 0
     //% group="PID"
-   
-    export function NewPID(kp:number, ti:number, td:number): PID { 
-        
-        let PID1 = new PID(kp, ti, td)
-        return PID1
+    //% blockSetVariable=PID
+    export function newPID(kp:number, ti:number, td:number): PID { 
+         
+        return new PID(kp, ti, td)
     }
 }
 
 //% blockNamespace=Control   
-//% blockId="PID_controller"
-//% autoCreate=Control.NewPID
+//% autoCreate=Control.newPID
 class PID {
     //% group="PID"
     private kp:number;
@@ -101,12 +97,13 @@ class PID {
     private _error_sum:number;
     private _last_error:number;
     private _correction:number;
+
     constructor(kp:number, ti:number, td:number){
         this.kp = kp
         this.ti = ti
         this.td = td
 
-         // not exposed
+        // not exposed
         this._correction = 0
         this._error = 0
         this._error_dif = 0
@@ -131,9 +128,6 @@ class PID {
         this._correction = this.kp * this._error + (this.kp / this.ti) * this._error_sum + this.kp * this.td * this._error_dif
         return this._correction
     }
-
-
-}
 
 
 }
