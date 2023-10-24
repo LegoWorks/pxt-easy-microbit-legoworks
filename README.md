@@ -1,4 +1,4 @@
-This extension was made to make easier the use of some Microbit funtions as Pins use or (in a future) serial connection use or PID.
+This extension was made to make easier the use of some Microbit funtions in blocks programming as Pins use or (in a future) serial connection use or PID. 
 
 You can import this extension and use some functionalities as:
 
