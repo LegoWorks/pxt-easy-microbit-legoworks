@@ -39,9 +39,12 @@ namespace Easy_pins {
     /**
      * When digital pin is low or high, code below will be execute.
      */
-    //% block="Cuando el pin $pin esté $value"
+    //% block="Pin $pin está $value"
+
     //% value.shadow="toggleOnOff"
-    export function OnPinState(pin:DigitalPin, value: () => void):void{}
+    export function OnPinState(pin:DigitalPin, value:boolean):boolean{
+        return value
+    }
 
 
     /**
@@ -138,4 +141,3 @@ class PID {
 
 
 }
-
