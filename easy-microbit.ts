@@ -5,7 +5,6 @@
 
 namespace Easy_pins {
 
-
     /**
      * Block to control digital pins.
      */
@@ -43,7 +42,10 @@ namespace Easy_pins {
 
     //% value.shadow="toggleOnOff"
     export function OnPinState(pin:DigitalPin, value:boolean):boolean{
-        return value
+        return value ? 
+        (pins.digitalReadPin(pin) == 1 ? true : false) : 
+        (pins.digitalReadPin(pin) == 0 ? true : false)
+        
     }
 
 
