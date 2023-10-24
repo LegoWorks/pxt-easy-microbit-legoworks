@@ -10,7 +10,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "easy-microbit.ts"
+        "easy-microbit.ts",
+        "_locales/es-ES/README.md",
         "easy-control.ts"
     ],
     "testFiles": [
