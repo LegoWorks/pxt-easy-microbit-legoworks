@@ -6,7 +6,6 @@
 namespace Easy_pins {
 
 
-
     /**
      * Block to control digital pins.
      */
@@ -36,6 +35,13 @@ namespace Easy_pins {
     export function readPin(pin: DigitalPin): int8 {
         return pins.digitalReadPin(pin)
     }
+
+    /**
+     * When digital pin is low or high, code below will be execute.
+     */
+    //% block="Cuando el pin $pin esté $value"
+    //% value.shadow="toggleOnOff"
+    export function OnPinState(pin:DigitalPin, value: () => void):void{}
 
 
     /**
@@ -132,3 +138,4 @@ class PID {
 
 
 }
+
