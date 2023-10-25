@@ -1,7 +1,7 @@
 {
     "name": "LegoWorks Easy Microbit",
     "version": "1.0.0",
-    "description": "",
+    "description": "This extension makes easier the use of some functionalities of Microbit such as Pin use or the implementation of PID controllers",
     "dependencies": {
         "core": "*",
         "radio": "*",
