@@ -13,13 +13,14 @@
         "README.md",
         "easy-microbit.ts",
         "_locales/es-ES/README.md",
-        "easy-control.ts"
+        "easy-control.ts",
+        "easy-robot.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "6.0.19",
+        "target": "7.0.51",
         "targetId": "microbit"
     },
     "supportedTargets": [
