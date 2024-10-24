@@ -20,6 +20,19 @@ namespace Easy_robot {
     //% value.shadow="toggleOnOff"
 
 
+    /**
+     * Block to read digital pins value.
+     */
+    //% block="Leer valor digital de $pin"
+    //% group="Digital pins"
+
+    //% pin.fieldEditor="gridpicker"
+    //% pin.fieldOptions.width=20
+    //% pin.fieldOptions.columns=1
+    export function readPin(pin: DigitalPin): int8 {
+        return pins.digitalReadPin(pin)
+    }
+
 }
 
 
