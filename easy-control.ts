@@ -1,64 +1,37 @@
-
-
 //% color="#4169E1" icon="\uf22b"
-//% groups="['PID']"
+//% groups="['Control']"
 //% block="Easy control"
-namespace Control{
-    
-    //% block="Crear nuevo controlador con parametros: kp=$kp ti=$ti td=$td"
-    //% kp.defl = 1 ti.defl = 1 td.defl = 0
-    //% group="PID"
-    //% blockSetVariable=PID
-    export function newPID(kp:number, ti:number, td:number): PID { 
-         
-        return new PID(kp, ti, td)
+namespace Control {
+
+    //% block="Crear nuevo controlador proporcional con ganancia kp=$kp"
+    //% kp.defl = 1
+    //% group="Control"
+    //% blockSetVariable=PropControl
+    export function newPropControl(kp: number): PropControl {
+        return new PropControl(kp)
     }
 }
 
 //% blockNamespace=Control   
-//% autoCreate=Control.newPID
-class PID {
-    //% group="PID"
-    private kp:number;
-    private ti:number;
-    private td:number;
-    private _error:number;
-    private _error_dif:number;
-    private _error_sum:number;
-    private _last_error:number;
-    private _correction:number;
+//% autoCreate=Control.newPropControl
+class PropControl {
+    //% group="Control"
+    private kp: number;
+    private _correction: number;
 
-    constructor(kp:number, ti:number, td:number){
+    constructor(kp: number) {
         this.kp = kp
-        this.ti = ti
-        this.td = td
-
-        // not exposed
         this._correction = 0
-        this._error = 0
-        this._error_dif = 0
-        this._error_sum = 0
-        this._last_error = 0
-  
     }
 
-
-    // exposed as read-only (only in the getter block)
     /**
-    * Block to control analog pins.
+    * Calcula la corrección proporcional basada en el error entre el valor medido y el objetivo
     */
-
-    //% this.defl=PID
-    //% block="Corrección: $this para una entrada= $input y con objetivo= $target" 
-    GetCorrection(input: number, target: number) {
-
-        this._error = input - target;
-        this._error_dif = this._error - this._last_error;
-        this._error_sum += this._error;
-
-        this._correction = this.kp * this._error + (this.kp / this.ti) * this._error_sum + this.kp * this.td * this._error_dif
-        return this._correction
+    //% this.defl=PropControl
+    //% block="Corrección: $this para valor medido= $measured y objetivo= $target" 
+    GetCorrection(measured: number, target: number) {
+        let error = target - measured;  // El error es la diferencia entre el objetivo y el valor medido
+        this._correction = this.kp * error;  // La corrección es proporcional al error
+        return this._correction;
     }
-
-
 }
